@@ -28,7 +28,7 @@ jobs:
         id: check-paths 
         run: |
           # load target files/directories from '.github/include.txt'
-          INCLUDE_PATHS=$(cat '../.github/include.txt')
+          INCLUDE_PATHS=$(cat '.github/include.txt')
           CHANGED_FILES=$(git diff --name-only HEAD^)
 
           SHOULD_SYNC="false"
