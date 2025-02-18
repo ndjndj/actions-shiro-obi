@@ -34,7 +34,7 @@ jobs:
           SHOULD_SYNC="false"
           while IFS= read -r file; do 
             while IFS= read -r include_path; do 
-              if [[ "$file" == $include_path]] || [[ "$file" == $include_path/* ]]; then
+              if [[ $file =~ $include_path]] || [[ $file =~ $include_path/* ]]; then
                 SHOULD_SYNC="true"
                 break 2 
               fi 
@@ -54,7 +54,7 @@ jobs:
 
           #checkout files/directories listed in include.txt
           while IFS= read -r path; do 
-            if [[ -n "$path" && ! "$path" =~ ^[[:space:]]*# ]]; then 
+            if [[ -n $path && ! $path =~ ^[[:space:]]*# ]]; then 
               git checkout main -- "$path" || echo "WARNING: Failed to checkout $path"
             fi 
 
