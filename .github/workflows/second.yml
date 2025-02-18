@@ -38,7 +38,7 @@ jobs:
                 SHOULD_SYNC="true"
                 break 2 
               fi 
-            done < "$INCLUDE_PATHS"
+            done <<< "$INCLUDE_PATHS"
           done <<< "$CHANGED_FILES"
 
           echo "should_sync=$SHOULD_SYNC" >> $GITHUB_OUTPUT
