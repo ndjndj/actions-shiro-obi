@@ -60,10 +60,11 @@ jobs:
 
           #checkout files/directories listed in include.txt
           while IFS= read -r path; do 
-            normalized_path = "$(echo -e "${path}") | sed 's/^M$//g'"
-            echo "checking include_path: $path"
-            echo "checking normalized_path: $normalized_path"
+            
             if [[ -n $normalized_path && ! $normalized_path =~ ^[[:space:]]*# ]]; then 
+              normalized_path = "$(echo -e "${path}" | sed -e 's/^M$//g')"
+              echo "checking include_path: $path"
+              echo "checking normalized_path: $normalized_path"
               echo "match found."
               git checkout main -- $normalized_path* || echo "WARNING: Failed to checkout $path"
             fi 
