@@ -60,7 +60,7 @@ jobs:
 
           #checkout files/directories listed in include.txt
           while IFS= read -r path; do 
-            normalized_path = "$(echo -e "${path}" | sed -e 's/^M$//g')"
+            normalized_path="$(echo -e "${path}" | sed -e 's/^M$//g')"
             echo "checking include_path: $path"
             echo "checking normalized_path: $normalized_path"
             if [[ -n $normalized_path && ! $normalized_path =~ ^[[:space:]]*# ]]; then 
