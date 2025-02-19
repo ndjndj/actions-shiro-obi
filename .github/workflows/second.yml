@@ -35,7 +35,7 @@ jobs:
           SHOULD_SYNC="false"
           while IFS= read -r file; do 
             while IFS= read -r include_path; do 
-              if [[ "$file" == "$include_path" ]] || [[ "$file" == "$include_path"/* ]]; then
+              if [[ "$file" == "$include_path" ]] || [[ "$file" == "$include_path"**/* ]]; then
                 SHOULD_SYNC="true"
                 break 2 
               fi 
