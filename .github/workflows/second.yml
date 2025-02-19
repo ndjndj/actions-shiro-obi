@@ -35,8 +35,11 @@ jobs:
           SHOULD_SYNC="false"
           while IFS= read -r file; do 
             while IFS= read -r include_path; do 
-              if [[ "$file" == "$include_path" ]] || [[ "$file" == "$include_path"**/* ]]; then
+              echo "Checking file: $file"
+              echo "Against include_path: $include_path"
+              if [[ "$file" == "$include_path" ]] || [[ "$file" == "$include_path"* ]]; then
                 SHOULD_SYNC="true"
+                echo "match found."
                 break 2 
               fi 
             done <<< "$INCLUDE_PATHS"
