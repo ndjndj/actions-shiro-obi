@@ -59,7 +59,9 @@ jobs:
 
           #checkout files/directories listed in include.txt
           while IFS= read -r path; do 
+            echo "checking include_path: $path"
             if [[ -n $path && ! $path =~ ^[[:space:]]*# ]]; then 
+              echo "match found."
               git checkout main -- "$path" || echo "WARNING: Failed to checkout $path"
             fi 
 
