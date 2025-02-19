@@ -64,7 +64,6 @@ jobs:
             echo "checking include_path: $path"
             echo "checking normalized_path: $normalized_path"
             if [[ -n $normalized_path && ! $normalized_path =~ ^[[:space:]]*# ]]; then 
-              
               echo "match found."
               git checkout main -- $normalized_path* || echo "WARNING: Failed to checkout $path"
             fi 
