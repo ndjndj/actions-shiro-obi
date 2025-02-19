@@ -51,7 +51,8 @@ jobs:
         if: steps.check-paths.outputs.should_sync == 'true'
         run: |
           INCLUDE_PATHS=$(cat '.github/include.txt')
-          git fetch origin proproduction || git checkout -b preproduction 
+          git fetch origin main
+          git checkout -b preproduction 
           git checkout -b tmp-sync 
 
           #remove all files except .git
